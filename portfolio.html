@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <!-- Meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="Browse RenderRise Studio&#x27;s portfolio of exterior and interior 3D architectural renders, from modern homes and townhouses to commercial spaces.">
+  <meta name="keywords" content="3D rendering, architectural visualization, exterior renders, interior renders, floor plans, walkthrough, VR,
+3D rendering, architectural rendering, 3D visualization, archviz, 3D design, exterior rendering, interior rendering,
+3D modeling, CGI architecture, photorealistic rendering, architects Australia, builders Australia, property developers,
+real estate Australia, construction Australia, interior design Australia, urban design, building design,
+home design Australia, commercial design">
+  <meta name="author" content="RenderRise Studio">
+  <!-- Page Title -->
+  <title>3D Rendering Portfolio | Interior &amp; Exterior | RenderRise</title>
+  <link rel="canonical" href="https://renderrise.com.au/portfolio.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Favicon Icon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+  <!-- Font Awesome -->
+
+  <!-- Google Fonts -->
+
+  <!-- Bootstrap Css -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <!-- SlickNav Css -->
+  <link href="css/slicknav.min.css" rel="stylesheet">
+  <!-- Swiper Css -->
+  <link rel="stylesheet" href="css/swiper-bundle.min.css">
+  <!-- Font Awesome Icon Css (local fallback) -->
+  <link href="css/animate.css" rel="stylesheet">
+  <!-- Magnific Popup Core Css File -->
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <!-- Mouse Cursor Css File -->
+  <link rel="stylesheet" href="css/mousecursor.css">
+  <!-- Main Custom Css -->
+  <link href="css/custom.css" rel="stylesheet" media="screen">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LT7BG07V4R"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-LT7BG07V4R');
+  </script>
+  <!-- Additional style for portfolio filter & gallery -->
+  <style>
+    /* ----- portfolio filter & cards ----- */
+    .portfolio-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 50px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 2px solid #e0d6c8;
+      padding: 12px 36px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #2d2d2d;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Times New Roman', Times, serif;
+      letter-spacing: 0.5px;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #B39459;
+      border-color: #c8a165;
+      color: black;
+      box-shadow: 0 10px 25px -5px rgba(200, 161, 101, 0.4);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s ease;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      color: #1a1a1a;
+      box-shadow: 0 30px 45px -12px rgba(200, 161, 101, 0.35);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: white;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay span {
+      background: #B39459;
+      color: black;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-size: 16px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    /* ---- same navbar / footer styles as process page (already inherited) ---- */
+    /* additional polish */
+    .page-header {
+      background-color: #1a1a1a;
+    }
+
+    .btn-default:hover {
+      background: #B39459;
+      color: #fff;
+    }
+
+    /* mobile grid */
+    @media (max-width: 991px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* IMPROVED MODAL STYLES - FIXED CLOSE & NAVIGATION */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.92);
+      overflow: hidden;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-image-container {
+      max-width: 90%;
+      max-height: 90%;
+      margin: auto;
+      position: relative;
+      text-align: center;
+    }
+
+    .modal-content {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      animation: zoomIn 0.3s ease;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.92);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 25px;
+      right: 40px;
+      color: #fff;
+      font-size: 44px;
+      font-weight: 300;
+      cursor: pointer;
+      transition: 0.25s ease;
+      z-index: 10010;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: #B39459;
+      background: rgba(0, 0, 0, 0.8);
+      transform: scale(1.05);
+    }
+
+    #modalCaption {
+      margin-top: 18px;
+      text-align: center;
+      color: #f0f0f0;
+      font-size: 18px;
+      font-family: 'Times New Roman', Times, serif;
+      letter-spacing: 0.5px;
+    }
+
+    .modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 30px;
+      pointer-events: none;
+      z-index: 10005;
+    }
+
+    .modal-prev,
+    .modal-next {
+      pointer-events: auto;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-prev:hover,
+    .modal-next:hover {
+      background: #B39459;
+      color: #1a1a1a;
+      transform: scale(1.08);
+      border-color: #B39459;
+    }
+
+    /* Gallery Item Cursor */
+    .gallery-item {
+      cursor: pointer;
+    }
+
+    /* hide body scroll when modal open */
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+
+      .modal-prev,
+      .modal-next {
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+      }
+
+      .modal-nav {
+        padding: 0 12px;
+      }
+
+      .modal-close {
+        top: 15px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Preloader Start -->
+  <div class="preloader">
+    <div class="loading-container">
+      <div class="loading"></div>
+      <div id="loading-icon"><img src="images/loader.svg" alt=""></div>
+    </div>
+  </div>
+  <!-- Preloader End -->
+
+  <!-- Topbar Section Start (same as process page) -->
+  <div class="topbar">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7 col-md-6">
+          <!-- Topbar Contact Information Start -->
+          <div class="topbar-contact-info">
+            <ul>
+              <li class="text-dark"> <a href="#"><b>ABN</b>
+                  74
+                  695 615
+                  171</a></li>
+              <li class="text-dark"><img src="images/icon-mail-white.svg" alt=""> <a
+                  href="mailto:sales@renderrise.com.au">sales@renderrise.com.au</a></li>
+            </ul>
+          </div>
+          <!-- Topbar Contact Information End -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Topbar Section End -->
+
+  <!-- Header Start -->
+  <header class="main-header">
+    <div class="header-sticky">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <!-- Logo Start -->
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.svg" alt="RenderRise Studio">
+          </a>
+          <!-- Logo End -->
+
+          <!-- Main Menu Start -->
+          <div class="collapse navbar-collapse main-menu">
+            <div class="nav-menu-wrapper">
+              <ul class="navbar-nav mr-auto" id="menu">
+                <li class="nav-item "><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="process.html">Process</a></li>
+                <li class="nav-item "><a class="nav-link" href="portfolio.html">Portfolio</a> </li>
+                <li class="nav-item "><a class="nav-link" href="disclaimer.html">Disclaimer</a> </li>
+                <li class="nav-item"><a class="nav-link" href="faq.html">Faq</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+              </ul>
+              <style>
+                /* Desktop (Laptop) */
+                .nav-link {
+                  color: white !important;
+                }
+
+                /* Mobile */
+                @media (max-width:991px) {
+                  .nav-link {
+                    color: black !important;
+                  }
+                }
+              </style>
+            </div>
+
+            <!-- Header Btn Start -->
+            <div class="header-btn">
+              <a href="contact.html" class="btn-default text-dark">Request a Quote</a>
+            </div>
+            <!-- Header Btn End -->
+          </div>
+          <!-- Main Menu End -->
+          <div class="navbar-toggle"></div>
+        </div>
+      </nav>
+      <div class="responsive-menu"></div>
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <!-- Page Header Section Start (same style) -->
+  <div class="page-header parallaxie">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header-box">
+            <h1 class="text-anime-style-3" data-cursor="-opaque">OUR PORTFOLIO</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page Header Section End -->
+
+  <!-- Scrolling Ticker Section Start (same ticker) -->
+  <div class="our-scrolling-ticker">
+    <div class="scrolling-ticker-box">
+      <div class="scrolling-content">
+        <span><img src="images/icon-asterisk-white.svg" alt="">Exterior 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Interior 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Townhouse 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Commercial 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">3D Floor Plans</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">3D Streetscapes</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">360° VR</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Walkthroughs</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Exterior 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Interior 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Townhouse 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Commercial 3D Renders</span>
+      </div>
+      <div class="scrolling-content">
+        <span><img src="images/icon-asterisk-white.svg" alt="">Exterior 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Interior 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Townhouse 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Commercial 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">3D Floor Plans</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">3D Streetscapes</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">360° VR</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Walkthroughs</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Exterior 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Interior 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Townhouse 3D Renders</span>
+        <span><img src="images/icon-asterisk-white.svg" alt="">Commercial 3D Renders</span>
+      </div>
+    </div>
+  </div>
+  <!-- Scrolling Ticker Section End -->
+
+  <!-- Portfolio Gallery Section -->
+  <div class="container" style="padding: 70px 0 90px;">
+    <div class="portfolio-header">
+      <h2 class="text-anime-style-3" data-cursor="-opaque">Our Recent Work</h2>
+      <p>Explore a selection of our interior and exterior architectural visualization projects. Click on any image to
+        enlarge and navigate with arrow buttons.</p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons wow fadeInUp" style="color:black ;">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="interior">Interior</button>
+      <button class="filter-btn" data-filter="exterior">Exterior</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid wow fadeInUp" data-wow-delay="0.2s" id="portfolio-gallery">
+      <!-- all items with data-category and unique identifiers for modal navigation -->
+      <div class="gallery-item" data-category="exterior" data-index="0">
+        <img src="images/exterior/1.webp" alt="Modern Exterior Residence">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="interior" data-index="1">
+        <img src="images/interior/1.webp" alt="Luxury Living Room Interior">
+        <div class="gallery-overlay"><span>Interior</span></div>
+      </div>
+      <div class="gallery-item" data-category="exterior" data-index="2">
+        <img src="images/exterior/2.webp" alt="Contemporary Villa Front">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="exterior" data-index="3">
+        <img src="images/exterior/3.webp" alt="Minimalist Architecture">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="interior" data-index="4">
+        <img src="images/interior/2.webp" alt="Elegant Dining Space">
+        <div class="gallery-overlay"><span>Interior</span></div>
+      </div>
+      <div class="gallery-item" data-category="exterior" data-index="5">
+        <img src="images/exterior/4.webp" alt="Beachfront Property">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="exterior" data-index="6">
+        <img src="images/exterior/5.webp" alt="Urban Townhouse">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="interior" data-index="7">
+        <img src="images/interior/3.webp" alt="Modern Kitchen Design">
+        <div class="gallery-overlay"><span>Interior</span></div>
+      </div>
+      <div class="gallery-item" data-category="exterior" data-index="8">
+        <img src="images/exterior/6.webp" alt="Glass Facade Building">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="exterior" data-index="9">
+        <img src="images/exterior/7.webp" alt="Tropical Modern Home">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="interior" data-index="10">
+        <img src="images/interior/4.webp" alt="Cozy Bedroom Retreat">
+        <div class="gallery-overlay"><span>Interior</span></div>
+      </div>
+      <div class="gallery-item" data-category="exterior" data-index="11">
+        <img src="images/exterior/8.webp" alt="Classic European Style">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="exterior" data-index="12">
+        <img src="images/exterior/9.webp" alt="Modern Office Building">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="interior" data-index="13">
+        <img src="images/interior/5.webp" alt="Spa Bathroom Design">
+        <div class="gallery-overlay"><span>Interior</span></div>
+      </div>
+      <div class="gallery-item" data-category="exterior" data-index="14">
+        <img src="images/exterior/10.webp" alt="Rooftop Terrace View">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="exterior" data-index="15">
+        <img src="images/exterior/11.webp" alt="Mountain Retreat">
+        <div class="gallery-overlay"><span>Exterior</span></div>
+      </div>
+      <div class="gallery-item" data-category="interior" data-index="16">
+        <img src="images/interior/6.webp" alt="Home Office Workspace">
+        <div class="gallery-overlay"><span>Interior</span></div>
+      </div>
+    </div>
+
+    <!-- Optional CTA -->
+    <div class="text-center wow fadeInUp">
+      <a href="contact.html" class="btn-default text-dark">Start Your Project</a>
+    </div>
+  </div>
+
+  <!-- IMPROVED IMAGE MODAL (with navigation arrows & proper close) -->
+  <div id="imageModal" class="image-modal">
+    <div class="modal-content-wrapper">
+      <span class="modal-close">&times;</span>
+      <div class="modal-nav">
+        <div class="modal-prev">⬅️</div>
+        <div class="modal-next">➡️</i></div>
+      </div>
+      <div class="modal-image-container">
+        <img class="modal-content" id="modalImage" alt="Full size render">
+        <div id="modalCaption"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Start -->
+  <footer class="main-footer dark-section">
+    <div class="container">
+      <!-- Footer Header Start -->
+      <div class="footer-header">
+        <div class="row align-items-center">
+          <div class="col-xl-12">
+            <div class="about-footer">
+              <div class="footer-logo">
+                <img src="images/logo.svg" alt="RenderRise">
+              </div>
+              <div class="about-footer-content">
+                <p>RenderRise Studio – Professional 3D architectural visualization for architects,
+                  developers, and designers worldwide.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Header End -->
+
+      <div class="row justify-content-between">
+        <div class="col-xl-12 space">
+          <div class="footer-links-box">
+            <div class="footer-links">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="services.html">Our Services</a></li>
+                <li><a href="process.html">Our Process</a></li>
+                <li><a href="portfolio.html">Our Portfolio</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-links">
+              <h3>Our Services</h3>
+              <ul>
+                <li><a href="exterior-3d-rendering.html">Exterior 3D Renders</a></li>
+                <li><a href="interior-3d-rendering.html">Interior 3D Renders</a></li>
+                <li><a href="townhouse-3d-rendering.html">Townhouse 3D Renders</a></li>
+                <li><a href="commercial-3d-rendering.html">Commercial 3D Renders</a></li>
+                <li><a href="3d-floor-plans.html">3D Floor Plans</a></li>
+                <li><a href="3d-streetscape-rendering.html">3D Streetscapes</a></li>
+                <li><a href="360-vr-visualization.html">360° VR Visualizations</a></li>
+                <li><a href="3d-walkthrough-animation.html">Walkthrough Animations</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-links footer-contact-links">
+              <h3>Get In Touch</h3>
+              <div class="footer-contact-list">
+                <div class="footer-contact-item">
+                  <div class="icon-box">
+                    <img src="images/icon-mail-white.svg" style="filter: brightness(0);" alt="">
+                  </div>
+                  <div class="footer-contact-content">
+                    <h3>E-mail Us</h3>
+                    <p><a href="mailto:info@renderrise.com.au">sales@renderrise.com.au</a></p>
+                  </div>
+                </div>
+                <div class="footer-contact-item">
+                  <div class="icon-box">
+                    <img src="images/icon-phone-white.svg" style="filter: brightness(0);" alt="">
+                  </div>
+                  <div class="footer-contact-content">
+                    <h3>Call Us</h3>
+                    <p><a href="tel:+61-452265124">0452265124</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <div class="footer-copyright">
+            <div class="footer-copyright-text">
+              <p>Copyright © 2025 RenderRise Studio. All Rights Reserved.</p>
+            </div>
+            <div class="footer-privacy-policy">
+              <ul>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="servicespolicy.html">Services Policy</a></li>
+              </ul>
+            </div>
+            <div class="footer-social text-center">
+              <a href=" https://www.facebook.com/profile.php?id=61580743984576"><i
+                  class="fa-brands fa-facebook-f"></i></a>
+              <a href=" https://www.youtube.com/@RenderRiseStudioPtyLtd"><i class="fa-brands fa-youtube"></i></a>
+              <a href=" https://www.instagram.com/renderrisestudiosales"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://wa.me/61452265124?text=Hi%20RenderRise%20Studio%2C%20I%20have%20an%20enquiry"><i
+                  class="fa-brands fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <style>
+    .footer-social a {
+      color: white;
+      font-size: 22px;
+      margin: 0 12px;
+      display: inline-block;
+      font-family: "Font Awesome 6 Brands" !important;
+    }
+
+    .footer-social a i {
+      font-family: "Font Awesome 6 Brands" !important;
+      font-style: normal;
+    }
+
+    .fa-facebook-f:before {
+      content: "\f39e" !important;
+    }
+
+    .fa-youtube:before {
+      content: "\f167" !important;
+    }
+
+    .fa-instagram:before {
+      content: "\f16d" !important;
+    }
+
+    .main-footer {
+      padding-top: 20px !important;
+      margin-top: 20px !important;
+    }
+
+    .footer-links-box {
+      margin-top: 5px;
+      padding-top: 0;
+    }
+  </style>
+
+  <!-- Scripts (same as process page) -->
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/validator.min.js"></script>
+  <script src="js/jquery.slicknav.min.js"></script>
+  <script src="js/swiper-bundle.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.counterup.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/SmoothScroll.min.js"></script>
+  <script src="js/parallaxie.min.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/magiccursor.min.js"></script>
+  <script src="js/SplitText.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/jquery.mb.YTPlayer.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/function.min.js"></script>
+
+  <!-- CUSTOM MODAL LOGIC WITH PROPER CLOSE + ARROW NAVIGATION (No design change) -->
+  <script>
+    (function () {
+      // DOM elements
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const modalCaption = document.getElementById('modalCaption');
+      const closeBtn = document.querySelector('.modal-close');
+      const prevBtn = document.querySelector('.modal-prev');
+      const nextBtn = document.querySelector('.modal-next');
+
+      let currentGalleryItems = [];    // array of visible gallery elements (based on current filter)
+      let currentIndex = 0;
+
+      // Helper: collect visible gallery items (not hidden by filter)
+      function updateVisibleGalleryItems() {
+        const allItems = Array.from(document.querySelectorAll('.gallery-item'));
+        // filter only those that are visible (display not 'none' and opacity not 0)
+        currentGalleryItems = allItems.filter(item => {
+          const style = window.getComputedStyle(item);
+          return style.display !== 'none' && style.visibility !== 'hidden';
+        });
+        return currentGalleryItems;
+      }
+
+      // open modal with specific item index
+      function openModalByIndex(index) {
+        if (!currentGalleryItems.length) return;
+        if (index < 0) index = 0;
+        if (index >= currentGalleryItems.length) index = currentGalleryItems.length - 1;
+        currentIndex = index;
+        const targetItem = currentGalleryItems[currentIndex];
+        const imgElement = targetItem.querySelector('img');
+        if (imgElement) {
+          modalImg.src = imgElement.src;
+          modalImg.alt = imgElement.alt || 'Architectural render';
+          const categorySpan = targetItem.querySelector('.gallery-overlay span');
+          const categoryText = categorySpan ? categorySpan.textContent : '';
+          modalCaption.innerHTML = categoryText ? `<span style="background: rgba(179,148,89,0.2); padding: 6px 18px; border-radius: 40px; display: inline-block; font-weight:500;">${categoryText} RenderRise Studio</span>` : 'RenderRise Studio';
+          modal.style.display = 'block';
+          document.body.classList.add('modal-open');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      // close modal fully
+      function closeModal() {
+        if (modal) {
+          modal.style.display = 'none';
+          document.body.classList.remove('modal-open');
+          document.body.style.overflow = '';
+          // optionally reset src to avoid flicker
+          // modalImg.src = '';
+        }
+      }
+
+      // next image
+      function nextImage() {
+        if (!currentGalleryItems.length) updateVisibleGalleryItems();
+        if (currentGalleryItems.length === 0) return;
+        let newIndex = currentIndex + 1;
+        if (newIndex >= currentGalleryItems.length) newIndex = 0;
+        openModalByIndex(newIndex);
+      }
+
+      // previous image
+      function prevImage() {
+        if (!currentGalleryItems.length) updateVisibleGalleryItems();
+        if (currentGalleryItems.length === 0) return;
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) newIndex = currentGalleryItems.length - 1;
+        openModalByIndex(newIndex);
+      }
+
+      // attach click events to all gallery items (delegation due to filter toggles)
+      function attachGalleryClickEvents() {
+        const container = document.getElementById('portfolio-gallery');
+        if (!container) return;
+        // remove old listener to avoid duplicate, then add fresh
+        container.removeEventListener('click', galleryClickHandler);
+        container.addEventListener('click', galleryClickHandler);
+      }
+
+      function galleryClickHandler(e) {
+        let targetItem = e.target.closest('.gallery-item');
+        if (!targetItem) return;
+        e.preventDefault();
+        e.stopPropagation();
+        // update visible items based on current DOM visibility
+        updateVisibleGalleryItems();
+        const clickedIndex = currentGalleryItems.findIndex(item => item === targetItem);
+        if (clickedIndex !== -1) {
+          openModalByIndex(clickedIndex);
+        } else {
+          // fallback: if not found in visible due to timing, recompute
+          updateVisibleGalleryItems();
+          const newIndex = currentGalleryItems.findIndex(item => item === targetItem);
+          if (newIndex !== -1) openModalByIndex(newIndex);
+        }
+      }
+
+      // Filter integration: after filter changes, we must re-calc visible items and ensure modal navigation works with filtered set
+      function overrideFilterButtons() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+          btn.removeEventListener('click', filterHandler);
+          btn.addEventListener('click', filterHandler);
+        });
+      }
+
+      function filterHandler(e) {
+        const btn = e.currentTarget;
+        const filterValue = btn.getAttribute('data-filter');
+
+        // update active class
+        document.querySelectorAll('.filter-btn').forEach(btnEl => btnEl.classList.remove('active'));
+        btn.classList.add('active');
+
+        // filter gallery items
+        const allItems = document.querySelectorAll('.gallery-item');
+        allItems.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        // after filter changes, refresh visible items for modal navigation
+        updateVisibleGalleryItems();
+        // if modal is open when filter changes, close it to avoid inconsistencies
+        if (modal && modal.style.display === 'block') {
+          closeModal();
+        }
+      }
+
+      // Keyboard navigation: left/right arrows & escape
+      function onKeyDown(e) {
+        if (!modal || modal.style.display !== 'block') return;
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          prevImage();
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          nextImage();
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          closeModal();
+        }
+      }
+
+      // Initialize everything
+      function init() {
+        updateVisibleGalleryItems();
+        attachGalleryClickEvents();
+        overrideFilterButtons();
+
+        // Modal close & navigation events
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+        if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+
+        // Click outside modal content to close
+        if (modal) {
+          modal.addEventListener('click', function (e) {
+            if (e.target === modal || e.target.classList.contains('modal-content-wrapper')) {
+              closeModal();
+            }
+          });
+        }
+
+        window.addEventListener('keydown', onKeyDown);
+
+        // Re-run visible items update when filter might be changed by any external, but we already handle via filter override.
+        // Also update after window resize? not needed.
+
+        // minor: re-run visible items update on any potential dynamic changes (just safe)
+        setInterval(() => {
+          if (modal && modal.style.display !== 'block') {
+            updateVisibleGalleryItems();
+          }
+        }, 500);
+      }
+
+      // WOW init and legacy magnificPopup removed to avoid double modal (we use custom modal now)
+      if (typeof WOW !== 'undefined') {
+        new WOW({ offset: 100, mobile: false }).init();
+      }
+
+      init();
+    })();
+  </script>
+</body>
+
+</html>

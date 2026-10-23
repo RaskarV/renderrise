@@ -1,0 +1,81 @@
+# ==========================================================
+# RenderRise Studio - .htaccess  (Apache / cPanel / XAMPP)
+# Place this file in the website root, next to index.html
+# ==========================================================
+
+# ----------------------------------------------------------
+# 1) CUSTOM 404 PAGE
+#    Use a LOCAL PATH like this. Never use a full URL
+#    (http://...), because that makes the server redirect and
+#    return 200/302 instead of a real 404 ("soft 404"), which
+#    Google treats as a problem.
+#    If the site lives in a sub-folder (e.g. XAMPP htdocs/mysite/)
+#    change it to:  ErrorDocument 404 /mysite/404.html
+# ----------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# Do not list folder contents
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# ----------------------------------------------------------
+# 2) HIDE FILES THAT SHOULD NEVER BE PUBLIC (served as 404)
+# ----------------------------------------------------------
+RewriteRule ^(vendor/|composer\.(json|lock)$|router\.php$) - [R=404,L]
+
+# ----------------------------------------------------------
+# 3) 301 (PERMANENT) REDIRECTS  - for pages that have MOVED
+#    Rule of thumb: redirect an old URL to the closest
+#    matching NEW page, never to the home page by default.
+#    Add one line per moved page, ABOVE the final catch-all:
+#
+#    RewriteRule ^old-page\.html$ /new-page.html [R=301,L]
+#
+#    Example - a renamed service page:
+#    RewriteRule ^services-old\.html$ /services.html [R=301,L]
+#
+#    Several old URLs to one new page:
+#    RewriteRule ^(old-a|old-b)\.html$ /new-page.html [R=301,L]
+# ----------------------------------------------------------
+
+# ----------------------------------------------------------
+# 4) ONE PREFERRED ADDRESS (enable on the LIVE server only,
+#    after the domain is confirmed - leave commented on localhost)
+#    Forces https:// and the non-www host:  https://renderrise.com.au
+#    If the real site is the www version, use the second block.
+# ----------------------------------------------------------
+# --- non-www + https ---
+# RewriteCond %{HTTP_HOST} ^www\.renderrise\.com\.au$ [NC,OR]
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://renderrise.com.au/$1 [R=301,L]
+#
+# --- www + https ---
+# RewriteCond %{HTTP_HOST} ^renderrise\.com\.au$ [NC,OR]
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://www.renderrise.com.au/$1 [R=301,L]
+</IfModule>
+
+# ----------------------------------------------------------
+# 5) HSTS - Strict-Transport-Security
+#    Tells browsers to use ONLY https:// for this site.
+#    - Browsers ignore this header over plain http, and the
+#      condition below sends it only on https requests to the
+#      real domain, so localhost is never affected.
+#    - It is "sticky": once a browser sees it, it refuses http
+#      for the whole max-age time. Raise the value in STAGES,
+#      and only after https works on EVERY page:
+#
+#      Stage 1 (now, testing)  : max-age=300        (5 minutes)
+#      Stage 2 (after a week)  : max-age=604800     (1 week)
+#      Stage 3 (all good)      : max-age=31536000   (1 year)
+#
+#    Enable the https redirect in section 4 first.
+#    Do NOT add includeSubDomains unless every subdomain
+#    (mail., cpanel., etc.) also works on https.
+#    Do NOT add "preload" unless you are sure - it is very hard to undo.
+# ----------------------------------------------------------
+<IfModule mod_headers.c>
+Header always set Strict-Transport-Security "max-age=300" "expr=%{HTTPS} == 'on' && %{HTTP_HOST} =~ /(^|[.])renderrise[.]com[.]au$/"
+</IfModule>

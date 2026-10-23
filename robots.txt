@@ -1,0 +1,14 @@
+# robots.txt for https://renderrise.com.au
+User-agent: *
+Allow: /
+
+# Keep unused template pages, server code and form handler out of search results
+Disallow: /unwanted/
+Disallow: /vendor/
+Disallow: /contact.php
+Disallow: /composer.json
+Disallow: /composer.lock
+
+# Do NOT block /css/, /js/ or /images/ - Google needs them to render and rank your pages
+
+Sitemap: https://renderrise.com.au/sitemap.xml
